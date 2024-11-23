@@ -10,21 +10,59 @@
 }
 
 :root {
+  --primary: #1C5310;
+  --secondary: #FFB81C;
   --background: #ffffff;
   --foreground: #171717;
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff;
+    --foreground: #171717;
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-[#1C5310] text-white px-6 py-3 rounded-lg hover:bg-[#163f0c] transition-colors duration-300;
+  }
+  
+  .btn-secondary {
+    @apply bg-[#FFB81C] text-[#1C5310] px-6 py-3 rounded-lg hover:bg-[#e6a619] transition-colors duration-300;
+  }
+
+  .section-padding {
+    @apply py-16 px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-width {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .heading-1 {
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1C5310];
+  }
+
+  .heading-2 {
+    @apply text-3xl sm:text-4xl font-bold text-[#1C5310];
+  }
+
+  .heading-3 {
+    @apply text-2xl sm:text-3xl font-bold text-[#1C5310];
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300;
+  }
+}
+
+img {
+  @apply max-w-full h-auto object-cover;
 }
