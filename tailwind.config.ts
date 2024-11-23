@@ -8,9 +8,20 @@ export default {
   ],
   theme: {
     extend: {
+      screens: {
+        'nav': '920px', // Custom breakpoint for navigation
+      },
+      fontFamily: {
+        'dellarobbia': ['DellaRobbia', 'serif'],
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+      },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'gradient-conic':
+          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
     },
   },
