@@ -3,6 +3,13 @@
 @tailwind utilities;
 
 @font-face {
+  font-family: 'Montserrat';
+  src: url('/fonts/Montserrat-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'DellaRobbia';
   src: url('/fonts/dellarobbia-bt.ttf') format('truetype');
   font-weight: normal;
@@ -10,17 +17,44 @@
 }
 
 :root {
-  --primary: #1C5310;
-  --secondary: #FFB81C;
+  /* FEU Tech Official Colors */
+  --primary: #1C5310;    /* FEU Tech Green */
+  --secondary: #FFB81C;  /* FEU Tech Gold */
   --background: #ffffff;
   --foreground: #171717;
 }
 
+/* Dark mode preferences */
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #ffffff;
-    --foreground: #171717;
+    --background: #171717;
+    --foreground: #ffffff;
   }
+}
+
+/* Custom utility classes for FEU Tech colors */
+.text-feu-green {
+  color: var(--primary);
+}
+
+.text-feu-gold {
+  color: var(--secondary);
+}
+
+.bg-feu-green {
+  background-color: var(--primary);
+}
+
+.bg-feu-gold {
+  background-color: var(--secondary);
+}
+
+.border-feu-green {
+  border-color: var(--primary);
+}
+
+.border-feu-gold {
+  border-color: var(--secondary);
 }
 
 @layer base {
@@ -47,19 +81,43 @@
   }
 
   .heading-1 {
-    @apply text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1C5310];
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold text-[#1C5310] tracking-tight leading-tight;
   }
 
   .heading-2 {
-    @apply text-3xl sm:text-4xl font-bold text-[#1C5310];
+    @apply text-3xl sm:text-4xl font-bold text-[#1C5310] tracking-tight leading-tight;
   }
 
   .heading-3 {
-    @apply text-2xl sm:text-3xl font-bold text-[#1C5310];
+    @apply text-2xl sm:text-3xl font-bold text-[#1C5310] tracking-tight leading-tight;
+  }
+
+  .title-gradient {
+    @apply bg-gradient-to-r from-[#1C5310] to-[#2A7A1A] bg-clip-text text-transparent;
+  }
+
+  .description-text {
+    @apply text-gray-600 leading-relaxed tracking-wide;
+  }
+
+  .stat-card {
+    @apply bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 border border-[#1C5310]/10 hover:border-[#1C5310]/30;
+  }
+
+  .icon-wrapper {
+    @apply relative p-3 rounded-lg bg-gradient-to-br from-[#1C5310]/10 to-[#FFB81C]/10 backdrop-blur-sm;
+  }
+
+  .feature-icon {
+    @apply w-12 h-12 text-[#1C5310] transform transition-transform duration-300 group-hover:scale-110;
+  }
+
+  .tag {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-[#1C5310]/10 text-[#1C5310] border border-[#1C5310]/20;
   }
 
   .card {
-    @apply bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300;
+    @apply bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 border border-[#1C5310]/10 hover:border-[#1C5310]/30;
   }
 }
 

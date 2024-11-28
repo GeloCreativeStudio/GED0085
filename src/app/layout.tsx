@@ -59,7 +59,7 @@ export default function RootLayout({
               </div>
             </div>
             <div className="mt-8 pt-8 border-t border-[#FFB81C]/20 text-center text-sm">
-              <p> 2024 GED0085 - FEU TECH. Developed by Angelo Manalo.</p>
+              <p>FEU TECH 2024. Developed by GED0085 - H0018 (Gender and Society).</p>
             </div>
           </div>
         </footer>

@@ -2,25 +2,18 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
-import {
-  HomeIcon,
-  UserGroupIcon,
-  NewspaperIcon,
-  AcademicCapIcon,
-  BookOpenIcon,
-  Bars3Icon,
-  XMarkIcon,
-} from '@heroicons/react/24/outline';
+import { BiHomeAlt2, BiGroup, BiNews, BiBookAlt, BiLibrary, BiMenu, BiX } from 'react-icons/bi';
 
 const navigationItems = [
-  { name: 'Home', href: '/', icon: HomeIcon },
-  { name: 'About', href: '/about', icon: UserGroupIcon },
-  { name: 'Issues', href: '/issues', icon: NewspaperIcon },
-  { name: 'Campaigns', href: '/campaigns', icon: AcademicCapIcon },
-  { name: 'Resources', href: '/resources', icon: BookOpenIcon },
+  { name: 'Home', href: '/', icon: BiHomeAlt2 },
+  { name: 'About', href: '/about', icon: BiGroup },
+  { name: 'Issues', href: '/issues', icon: BiNews },
+  { name: 'Campaigns', href: '/campaigns', icon: BiBookAlt },
+  { name: 'Resources', href: '/resources', icon: BiLibrary },
 ];
 
 export default function Navigation() {
@@ -49,8 +42,20 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex">
-            <Link href="/" className="flex-shrink-0 flex items-center">
-              <span className="font-dellarobbia text-2xl nav:text-3xl text-[#1C5310] tracking-wide">GED0085</span>
+            <Link href="/" className="flex-shrink-0 flex items-center space-x-3">
+              <div className="relative h-8 w-8 sm:h-10 sm:w-10">
+                <Image
+                  src="/images/feu/FEU-TECH-Seal.png"
+                  alt="FEU TECH Seal"
+                  fill
+                  className="object-contain"
+                  priority
+                />
+              </div>
+              <div className="flex flex-col">
+                <span className="font-bold text-xl sm:text-2xl text-[#1C5310] tracking-wide leading-tight">GED0085</span>
+                <span className="text-xs sm:text-sm text-[#1C5310]/80 font-medium -mt-1">Section H0018</span>
+              </div>
             </Link>
           </div>
 
@@ -83,9 +88,9 @@ export default function Navigation() {
             >
               <span className="sr-only">Open main menu</span>
               {mobileMenuOpen ? (
-                <XMarkIcon className="block h-6 w-6" />
+                <BiX className="block h-6 w-6" />
               ) : (
-                <Bars3Icon className="block h-6 w-6" />
+                <BiMenu className="block h-6 w-6" />
               )}
             </button>
           </div>
