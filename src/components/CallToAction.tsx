@@ -17,6 +17,7 @@ interface CallToActionProps {
   };
   backgroundImage?: string;
   className?: string;
+  programs?: string[];
 }
 
 export default function CallToAction({
@@ -31,7 +32,8 @@ export default function CallToAction({
     href: "https://www.angelomanalo.me/#contact"
   },
   backgroundImage = "/images/feu/fitwuribg_2024.jpg",
-  className = ''
+  className = '',
+  programs
 }: CallToActionProps) {
   return (
     <section className={`relative py-16 sm:py-20 ${className}`}>
@@ -49,53 +51,52 @@ export default function CallToAction({
       </div>
 
       {/* Content */}
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 text-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="space-y-6"
         >
-          {/* Title */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#FFB81C]">
+          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">
             {title}
           </h2>
-
-          {/* Description */}
-          <p className="text-lg sm:text-xl text-white/90 max-w-2xl mx-auto">
+          <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
             {description}
           </p>
 
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Link
-                href={primaryButton.href}
-                className="w-full sm:w-auto inline-flex items-center justify-center bg-[#FFB81C] text-[#1C5310] px-8 py-3 rounded-full font-semibold text-lg hover:bg-[#FFD700] transition-all duration-300 shadow-lg hover:shadow-xl"
-              >
-                {primaryButton.text}
-              </Link>
-            </motion.div>
+          {programs && programs.length > 0 && (
+            <div className="mb-8">
+              <div className="inline-flex flex-wrap justify-center gap-3 max-w-2xl mx-auto">
+                {programs.map((program, index) => (
+                  <motion.span
+                    key={index}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.4, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="px-4 py-2 rounded-full text-sm font-medium bg-white/10 text-white backdrop-blur-sm"
+                  >
+                    {program}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
+          )}
 
-            {secondaryButton && (
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href={secondaryButton.href}
-                  target={secondaryButton.href.startsWith('http') ? '_blank' : undefined}
-                  rel={secondaryButton.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="w-full sm:w-auto inline-flex items-center justify-center bg-transparent border-2 border-[#FFB81C] text-[#FFB81C] px-8 py-3 rounded-full font-semibold text-lg hover:bg-[#FFB81C]/10 transition-all duration-300"
-                >
-                  {secondaryButton.text}
-                </Link>
-              </motion.div>
-            )}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href={primaryButton.href}
+              className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-[#FFB81C] text-[#1C5310] font-semibold hover:bg-white transition-colors duration-300"
+            >
+              {primaryButton.text}
+            </Link>
+            <Link
+              href={secondaryButton.href}
+              className="inline-flex items-center justify-center px-8 py-3 rounded-full bg-white/10 text-white font-semibold hover:bg-white/20 backdrop-blur-sm transition-colors duration-300"
+            >
+              {secondaryButton.text}
+            </Link>
           </div>
         </motion.div>
       </div>
