@@ -4,7 +4,7 @@ import Image from 'next/image';
 import PageHeader from '@/components/PageHeader';
 import CallToAction from '@/components/CallToAction';
 import { motion } from 'framer-motion';
-import { BiBook, BiMovie, BiFile } from 'react-icons/bi';
+import { BiBook, BiMovie, BiFile, BiBookReader, BiBuildings } from 'react-icons/bi';
 
 export default function ResourcesPage() {
   return (
@@ -118,13 +118,13 @@ export default function ResourcesPage() {
                 title: 'Gender Equality in Education Guide',
                 type: 'PDF Guide',
                 description: 'Comprehensive guide for implementing gender-inclusive practices in educational settings.',
-                image: '/images/feu/FEUTech_Named_Top_University.jpg',
+                icon: BiBookReader,
               },
               {
                 title: 'Workplace Equality Toolkit',
                 type: 'Online Resource',
                 description: 'Tools and strategies for promoting gender equality in professional environments.',
-                image: '/images/feu/FEUTech_Named_Top_University.jpg',
+                icon: BiBuildings,
               },
             ].map((resource, index) => (
               <motion.div
@@ -133,27 +133,23 @@ export default function ResourcesPage() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden flex flex-col md:flex-row hover:shadow-xl transition-shadow duration-300"
+                className="bg-white rounded-2xl shadow-lg overflow-hidden flex hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="relative w-full md:w-48 h-48">
-                  <Image
-                    src={resource.image}
-                    alt={resource.title}
-                    fill
-                    className="object-cover"
-                    priority={index === 0}
-                  />
-                </div>
-                <div className="p-8 flex-1">
-                  <div className="text-sm text-[#1C5310] font-semibold mb-2">{resource.type}</div>
-                  <h3 className="text-xl font-bold text-[#1C5310] mb-3">{resource.title}</h3>
-                  <p className="text-gray-600">{resource.description}</p>
-                  <button className="mt-4 text-[#1C5310] hover:text-[#FFB81C] font-semibold transition-colors inline-flex items-center">
-                    Access Resource
-                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                  </button>
+                <div className="p-8 flex items-start space-x-6 w-full">
+                  <div className="bg-[#1C5310]/10 rounded-2xl p-6 flex-shrink-0">
+                    {<resource.icon className="w-12 h-12 text-[#1C5310]" />}
+                  </div>
+                  <div className="flex-1">
+                    <div className="text-sm text-[#1C5310] font-semibold mb-2">{resource.type}</div>
+                    <h3 className="text-xl font-bold text-[#1C5310] mb-3">{resource.title}</h3>
+                    <p className="text-gray-600">{resource.description}</p>
+                    <button className="mt-4 text-[#1C5310] hover:text-[#FFB81C] font-semibold transition-colors inline-flex items-center">
+                      Access Resource
+                      <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
+                      </svg>
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             ))}

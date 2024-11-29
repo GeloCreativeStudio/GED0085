@@ -97,95 +97,6 @@ export default function CampaignsPage() {
         </div>
       </section>
 
-      {/* Current Campaigns */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        {/* Background Elements */}
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-50 via-white to-gray-50"></div>
-        <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.02]"></div>
-        <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1C5310]/10 to-transparent"></div>
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#1C5310]/10 to-transparent"></div>
-
-        <div className="max-w-7xl mx-auto relative">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <span className="inline-flex items-center px-4 py-1.5 rounded-full text-sm font-medium bg-[#1C5310]/10 text-[#1C5310] mb-4">
-              Active Initiatives
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#1C5310] mb-6">
-              Current Campaigns
-            </h2>
-            <p className="max-w-2xl mx-auto text-gray-600 text-lg">
-              Join our ongoing initiatives aimed at promoting gender equality and inclusivity in technology education.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                title: 'Women in Tech Leadership',
-                description: 'Empowering women to take leadership roles in technology and innovation, breaking barriers and creating new opportunities.',
-                image: '/images/campaigns/leadership.jpg',
-                date: 'January - March 2025',
-                delay: 0
-              },
-              {
-                title: 'STEM for All',
-                description: 'Creating inclusive pathways for everyone to pursue careers in science, technology, engineering, and mathematics.',
-                image: '/images/campaigns/stem.jpg',
-                date: 'Ongoing',
-                delay: 0.1
-              },
-              {
-                title: 'Tech Industry Equality',
-                description: 'Advocating for equal opportunities, fair compensation, and transparent career advancement in the tech sector.',
-                image: '/images/campaigns/equal-pay.jpg',
-                date: 'February - June 2025',
-                delay: 0.2
-              },
-              {
-                title: 'Inclusive Innovation',
-                description: 'Building safe and inclusive spaces for learning, collaboration, and innovation in technology.',
-                image: '/images/campaigns/safe-spaces.jpg',
-                date: 'March - August 2025',
-                delay: 0.3
-              },
-            ].map((campaign, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: campaign.delay }}
-                viewport={{ once: true }}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden border border-[#1C5310]/10 hover:shadow-xl transition-shadow duration-300"
-              >
-                <div className="relative h-64">
-                  <Image
-                    src={campaign.image}
-                    alt={campaign.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
-                    priority={index < 2}
-                  />
-                </div>
-                <div className="p-8">
-                  <div className="inline-flex px-3 py-1 rounded-full text-sm font-medium bg-[#1C5310]/10 text-[#1C5310] mb-4">
-                    {campaign.date}
-                  </div>
-                  <h3 className="text-2xl font-bold text-[#1C5310] mb-4">{campaign.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{campaign.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Impact Metrics */}
       <section className="relative py-20 px-4 sm:px-6 lg:px-8 bg-[#1C5310] overflow-hidden">
         <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.02]"></div>
@@ -305,15 +216,17 @@ export default function CampaignsPage() {
       {/* Call to Action */}
       <CallToAction
         title="Join Our Movement"
-        description="Be part of our mission to create a more inclusive and equitable tech community. Your participation makes a difference."
+        description="Be part of our mission to create a more inclusive tech industry. Together, we can make a difference."
         primaryButton={{
           text: "Get Involved",
-          href: "/get-involved"
+          href: "/contact"
         }}
-        secondaryButton={{
-          text: "View Resources",
-          href: "/resources"
-        }}
+        programs={[
+          'Tech Community Focus',
+          'FEU Main Integration',
+          'Network Expansion',
+          'National Recognition'
+        ]}
       />
     </div>
   );

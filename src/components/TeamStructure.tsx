@@ -25,7 +25,8 @@ const teamData: TeamMember[] = [
   },
   {
     name: 'Andrei Jayniel Cortado',
-    role: 'Associate'
+    role: 'Associate',
+    imageUrl: '/images/Cortado.jpg'
   },
   {
     name: 'Christian Kevin Zarceno',

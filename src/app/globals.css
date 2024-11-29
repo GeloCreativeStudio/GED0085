@@ -121,6 +121,11 @@
   }
 }
 
+/* Scroll Indicator Glow Effect */
+.drop-shadow-glow {
+  filter: drop-shadow(0 0 8px rgba(255, 184, 28, 0.5));
+}
+
 img {
   @apply max-w-full h-auto object-cover;
 }

@@ -116,18 +116,19 @@ export default function Home() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="relative min-h-[100vh] flex items-center justify-center overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24"
+        className="relative min-h-screen flex flex-col items-center justify-between overflow-hidden py-12 sm:py-16 md:py-20 lg:py-24"
       >
+        {/* Background and overlay */}
         <div className="absolute inset-0">
           <Image
             src="/images/feu/FEUTech_Named_Top_University.jpg"
             alt="FEU Tech Campus"
             fill
-            className="object-cover object-center brightness-50 scale-105 transform hover:scale-110 transition-transform duration-[3000ms]"
+            className="object-cover object-center brightness-75 scale-105 transform hover:scale-110 transition-transform duration-[3000ms]"
             priority
             quality={100}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1C5310]/90 via-[#1C5310]/85 to-[#1C5310]/95"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-[#1C5310]/70 via-[#1C5310]/65 to-[#1C5310]/75"></div>
           
           {/* Decorative Elements */}
           <div className="absolute inset-0 bg-[url('/images/noise.png')] opacity-[0.02]" />
@@ -135,7 +136,9 @@ export default function Home() {
           <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
         </div>
         
-        <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        {/* Main Content */}
+        <div className="relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto flex-grow flex flex-col items-center justify-center">
+          {/* Hero Content */}
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -180,7 +183,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.9 }}
-              className="flex flex-col sm:flex-row gap-4 justify-center pt-8 sm:pt-10 mb-16 sm:mb-0"
+              className="flex flex-col sm:flex-row gap-6 justify-center pt-8 sm:pt-10"
             >
               <motion.div
                 whileHover={{ scale: 1.05 }}
@@ -189,7 +192,7 @@ export default function Home() {
               >
                 <Link
                   href="/get-involved"
-                  className="w-full inline-flex items-center justify-center bg-[#FFB81C] text-[#1C5310] px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-[#FFD700] transform transition-all duration-300 shadow-lg hover:shadow-xl"
+                  className="w-full inline-flex items-center justify-center bg-[#FFB81C] text-[#1C5310] px-6 sm:px-8 py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-[#FFD700] transform transition-all duration-300 shadow-lg hover:shadow-xl"
                 >
                   Get Involved
                 </Link>
@@ -201,7 +204,7 @@ export default function Home() {
               >
                 <Link
                   href="/about"
-                  className="w-full inline-flex items-center justify-center bg-transparent border-2 border-[#FFB81C] text-[#FFB81C] px-6 sm:px-8 py-3 sm:py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-[#FFB81C]/20 transform transition-all duration-300"
+                  className="w-full inline-flex items-center justify-center bg-transparent border-2 border-[#FFB81C] text-[#FFB81C] px-6 sm:px-8 py-4 rounded-full font-semibold text-base sm:text-lg hover:bg-[#FFB81C]/20 transform transition-all duration-300"
                 >
                   Learn More
                 </Link>
@@ -210,13 +213,31 @@ export default function Home() {
           </motion.div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-2 left-0 right-0 flex justify-center">
+        {/* Scroll Indicator Section */}
+        <div className="relative z-10 w-full mt-8 sm:mt-0">
           <motion.div 
-            animate={{ y: [0, 10, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
+            className="flex flex-col items-center justify-center gap-2 py-4 pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
           >
-            <BiChevronDown className="w-8 h-8 text-[#FFB81C] animate-pulse" />
+            <motion.div 
+              animate={{ 
+                y: [0, 10, 0],
+                scale: [1, 1.2, 1]
+              }}
+              transition={{ 
+                repeat: Infinity, 
+                duration: 2,
+                ease: "easeInOut"
+              }}
+              className="bg-[#FFB81C]/20 backdrop-blur-sm rounded-full p-2"
+            >
+              <BiChevronDown className="w-8 h-8 text-[#FFB81C] drop-shadow-glow" />
+            </motion.div>
+            <span className="text-[#FFB81C] text-sm font-medium tracking-wider uppercase opacity-90 mt-1">
+              Scroll Down
+            </span>
           </motion.div>
         </div>
       </motion.section>
